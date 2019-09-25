@@ -6,8 +6,8 @@
 # Description: 
 #########################################################################
 
-CEPH_PATH="/data/user/cephfs/breezecheng/dataset/image_retrieval/instance_detection/product_proposcal_data/finetune_det_data_pigz"
-LOCAL_PATH="/data/yard/workspace/breeze_dataset"
+CEPH_PATH="xx"
+LOCAL_PATH="xx"
 
 if (( $(find  $LOCAL_PATH -maxdepth 1 -mindepth 1 |wc -l)  >= 1 ));then
     echo "file exits"
