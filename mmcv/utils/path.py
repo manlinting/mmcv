@@ -77,3 +77,10 @@ def scandir(dir_path, suffix=None):
         return _scandir_py35(dir_path, suffix)
     else:
         return _scandir_py(dir_path, suffix)
+
+def clear_dir_if_exist(dir_name):
+    if dir_name == '':
+        return
+    import shutil
+    shutil.rmtree(dir_name)
+    os.mkdir(dir_name)

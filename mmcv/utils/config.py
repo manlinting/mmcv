@@ -8,6 +8,21 @@ from addict import Dict
 
 from .path import check_file_exist
 
+# todo support global cfg
+'''
+cfg = Dict()
+def update(cfg_):
+    def assign(a, b):
+        if isinstance(a, dict) and isinstance(b, dict):
+            for k in b:
+                a[k] = assign(a[k], b[k])
+            return a
+        return b
+
+    assert isinstance(cfg_, dict)
+    global cfg
+    assign(cfg, cfg_)
+'''
 
 class ConfigDict(Dict):
 

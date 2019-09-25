@@ -26,7 +26,8 @@ def load_state_dict(module, state_dict, strict=False, logger=None):
     unexpected_keys = []
     own_state = module.state_dict()
     for name, param in state_dict.items():
-        if name not in own_state:
+        # if name not in own_state:
+        if name not in own_state or own_state[name].size() != state_dict[name].size():
             unexpected_keys.append(name)
             continue
         if isinstance(param, torch.nn.Parameter):

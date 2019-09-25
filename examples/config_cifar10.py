@@ -1,7 +1,8 @@
 # model settings
 model = 'resnet18'
 # dataset settings
-data_root = '/mnt/SSD/dataset/cifar10'
+#data_root = '/mnt/SSD/dataset/cifar10'
+data_root = '/data/user/cephfs/lincolnlin/dataset/cifar10/'
 mean = [0.4914, 0.4822, 0.4465]
 std = [0.2023, 0.1994, 0.2010]
 batch_size = 64
@@ -13,7 +14,7 @@ lr_config = dict(policy='step', step=2)
 
 # runtime settings
 work_dir = './demo'
-gpus = range(2)
+gpus = [0,1,2,3]
 dist_params = dict(backend='nccl')
 data_workers = 2  # data workers per gpu
 checkpoint_config = dict(interval=1)  # save checkpoint at every epoch

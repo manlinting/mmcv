@@ -1,0 +1,50 @@
+# model settings
+model : resnet50
+
+# dataset settings
+train_data : 'data/train.txt'
+val_data : 'data/val.txt'
+root_path : '/data/yard/workspace/breeze_dataset/finetune_det_data/'
+mean : [0.485, 0.456, 0.406]
+std : [0.229, 0.224, 0.225]
+batch_size : 128
+#input_size : !!python/tuple [224]
+input_size : [224]
+
+# optimizer and learning rate
+optimizer : 
+    type : Adam
+    lr : 1.0e-2
+    #momentum : 0.9
+    weight_decay : 1.0e-5
+
+optimizer_config :
+    #grad_clip : None
+
+lr_config : 
+    policy : step
+    step : 20
+
+# runtime settings
+gpus : [ 2,3 ]
+data_workers : 5  # data workers per gpu
+checkpoint_config :
+    interval : 5 
+    save_optimizer : False
+ 
+workflow : 
+    - !!python/tuple ['train', 1]
+    - !!python/tuple ['val', 1]
+
+total_epochs : 100 
+#resume_from : stage_shufflenetv2_20181105_2204/latest.pth
+load_from : /data/user/cephfs/lincolnlin/pretrained/resnet50-19c8e357.pth
+
+# logging settings
+log_level : 'INFO'
+log_config :
+    interval : 50
+    hooks:
+        [ type : TextLoggerHook ]
+
+# loss settings
